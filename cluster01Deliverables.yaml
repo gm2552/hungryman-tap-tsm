@@ -1,0 +1,186 @@
+#@ load("@ytt:data", "data")
+
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-06-17T15:33:45Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: hungryman
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: web
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: hungryman-availability
+    carto.run/workload-namespace: #@ data.values.workloadNamespace
+    networking.knative.dev/visibility: cluster-local
+  name: hungryman-availability
+  namespace: #@ data.values.workloadNamespace
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: #@ data.values.gitOpsSecret
+  - name: gitops_sub_path
+    value: config/workloads/hungryman-availability
+  source:
+    git:
+      ref:
+        branch: main
+      url: #@ data.values.gitOpsRepo
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-09-15T18:28:08Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: hungryman-api-gateway
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: server
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: hungryman
+    carto.run/workload-namespace: #@ data.values.workloadNamespace
+  name: hungryman
+  namespace: #@ data.values.workloadNamespace
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: #@ data.values.gitOpsSecret
+  - name: gitops_sub_path
+    value: config/workloads/hungryman
+  source:
+    git:
+      ref:
+        branch: main
+      url: #@ data.values.gitOpsRepo
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-06-17T15:33:43Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: hungryman
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: web
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: hungryman-notify
+    carto.run/workload-namespace: #@ data.values.workloadNamespace
+    networking.knative.dev/visibility: cluster-local
+  name: hungryman-notify
+  namespace: #@ data.values.workloadNamespace
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: #@ data.values.gitOpsSecret
+  - name: gitops_sub_path
+    value: config/workloads/hungryman-notify
+  source:
+    git:
+      ref:
+        branch: main
+      url: #@ data.values.gitOpsRepo
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: hungryman
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: web
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: hungryman-search
+    carto.run/workload-namespace: #@ data.values.workloadNamespace
+    networking.knative.dev/visibility: cluster-local
+  name: hungryman-search
+  namespace: #@ data.values.workloadNamespace
+spec:
+  serviceAccountName: default
+  params:
+  - name: gitops_ssh_secret
+    value: #@ data.values.gitOpsSecret
+  - name: gitops_sub_path
+    value: config/workloads/hungryman-search
+  source:
+    git:
+      ref:
+        branch: main
+      url: #@ data.values.gitOpsRepo
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-06-17T15:33:42Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: hungryman
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: web
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: hungryman-search-proc
+    carto.run/workload-namespace: #@ data.values.workloadNamespace
+    networking.knative.dev/visibility: cluster-local
+  name: hungryman-search-proc
+  namespace: #@ data.values.workloadNamespace
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: #@ data.values.gitOpsSecret
+  - name: gitops_sub_path
+    value: config/workloads/hungryman-search-proc
+  source:
+    git:
+      ref:
+        branch: main
+      url: #@ data.values.gitOpsRepo
+---
+apiVersion: carto.run/v1alpha1
+kind: Deliverable
+metadata:
+  creationTimestamp: "2022-09-15T19:11:05Z"
+  generation: 1
+  labels:
+    app.kubernetes.io/component: deliverable
+    app.kubernetes.io/part-of: hungryman-ui
+    app.tanzu.vmware.com/deliverable-type: web
+    apps.tanzu.vmware.com/workload-type: server
+    carto.run/cluster-template-name: deliverable-template
+    carto.run/resource-name: deliverable
+    carto.run/supply-chain-name: source-to-url
+    carto.run/template-kind: ClusterTemplate
+    carto.run/workload-name: hungryman-ui
+    carto.run/workload-namespace: #@ data.values.workloadNamespace
+    networking.knative.dev/visibility: cluster-local
+  name: hungryman-ui
+  namespace: #@ data.values.workloadNamespace
+spec:
+  params:
+  - name: gitops_ssh_secret
+    value: #@ data.values.gitOpsSecret
+  - name: gitops_sub_path
+    value: config/workloads/hungryman-ui
+  source:
+    git:
+      ref:
+        branch: main
+      url: #@ data.values.gitOpsRepo
