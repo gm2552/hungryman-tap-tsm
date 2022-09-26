@@ -1,0 +1,16 @@
+#@ load("@ytt:data", "data")
+
+apiVersion: rabbitmq.com/v1beta1
+kind: RabbitmqCluster
+metadata:
+  annotations:
+    rabbitmq.com/topology-allowed-namespaces: '*'
+  name: rmq-hungryman
+  namespace: #@ data.values.serviceNamespace
+spec:
+  replicas: 1
+  resources:
+    requests:
+      cpu: 200m
+    limits:
+      cpu: 200m
