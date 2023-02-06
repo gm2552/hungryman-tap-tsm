@@ -152,6 +152,12 @@ metadata:
     app.kubernetes.io/part-of: hungryman-ui
     networking.knative.dev/visibility: cluster-local
 spec:
+  build:
+    env:
+    - name: BP_NODE_RUN_SCRIPTS
+      value: build
+    - name: BP_WEB_SERVER_ROOT
+      value: dist
   params:
   - name: ports
     value:
