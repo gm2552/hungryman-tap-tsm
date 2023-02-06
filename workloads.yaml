@@ -10,6 +10,10 @@ metadata:
     apps.tanzu.vmware.com/workload-type: server
     app.kubernetes.io/part-of: hungryman-api-gateway
 spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"  
   params:
   - name: ports
     value:
@@ -33,6 +37,10 @@ metadata:
     app.kubernetes.io/part-of: hungryman-search
     networking.knative.dev/visibility: cluster-local
 spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"  
   params:
   - name: ports
     value:
@@ -62,6 +70,10 @@ metadata:
     app.kubernetes.io/part-of: hungryman-search-proc
     networking.knative.dev/visibility: cluster-local
 spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"  
   env: 
   - name: spring_profiles_active
     value: crawler
@@ -94,6 +106,10 @@ metadata:
     app.kubernetes.io/part-of: hungryman-notify
     networking.knative.dev/visibility: cluster-local
 spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"  
   params:
   - name: ports
     value:
@@ -123,6 +139,10 @@ metadata:
     app.kubernetes.io/part-of: hungryman-availability
     networking.knative.dev/visibility: cluster-local
 spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"  
   params:
   - name: ports
     value:
@@ -162,7 +182,7 @@ spec:
   - name: ports
     value:
     - port: 80
-      containerPort: 3000
+      containerPort: 8080
       name: http
   source:
     git:
@@ -181,6 +201,10 @@ metadata:
     app.kubernetes.io/part-of: hungryman-crawler
     networking.knative.dev/visibility: cluster-local
 spec:
+  build:
+    env:
+      - name: BP_JVM_VERSION
+        value: "17"  
   params:
   - name: ports
     value:
